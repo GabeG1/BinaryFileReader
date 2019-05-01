@@ -16,7 +16,7 @@ CPPFLAGS = -Wall -Werror -I/people/cs/s/sxp127930/include
 LDFLAGS = -L/people/cs/s/sxp127930/lib
 LDLIBS = -lcdk -lcurses 
 
-OBJS = example1.o
+OBJS = program6.o
 
 .PHONY: all clean
 
