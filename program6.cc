@@ -21,6 +21,7 @@
 #include "cdk.h"
 #include <string>
 #include <sstream>
+#include <stdio.h>
 
 #define MATRIX_WIDTH 5
 #define MATRIX_HEIGHT 3
@@ -109,7 +110,8 @@ ifstream binaryFile ("binaryFile.bin", ios::in | ios::binary);
  //diplay updated matrix
  drawCDKMatrix(myMatrix, true);
 
- sleep (10);
+ getchar();
+ sleep (0);
 
  endCDK();
 
