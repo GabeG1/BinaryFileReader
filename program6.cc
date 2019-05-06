@@ -1,3 +1,19 @@
+/*                                                                              
+ *Filename        program6.cc                                                 
+ *Date            Cinco De Mayo!                                                        
+ *Author          Gabriel Goldstein                                             
+ *Email           gjg180000@utdallas.edu                                        
+ *Course          CS 3377.502 Spring 2019                                       
+ *Version         1.0                                                           
+ *Copyright 2019, All Rights Reserved                                           
+ *                                                                              
+ *Description                                                                   
+ *      Read from binary file and display using curses (cdk)                                                                        
+ *      
+ */
+
+
+
 #include <fstream>
 #include <iostream>
 #include "binaryFileHeader.h"
@@ -19,8 +35,7 @@ int main(int agrc, char* argv[])
   WINDOW        *window;
   CDKSCREEN     *cdkscreen;
   CDKMATRIX     *myMatrix;           // CDK Screen Matrix                                                                                                                                                   
-
-  // const char                *rowTitles[MATRIX_HEIGHT+1] = {"", "a", "b", "c", "d","e"};                                                                                                                     
+  //Filing out variables to be used with matrix
     const char                *rowTitles[MATRIX_HEIGHT+1] = {"", "a", "b", "c"};
     const char            *columnTitles[MATRIX_WIDTH+1] = {"", "a", "b", "c", "d", "e"};
   int           boxWidths[MATRIX_WIDTH+1] = {BOX_WIDTH, BOX_WIDTH, BOX_WIDTH, BOX_WIDTH};
@@ -64,9 +79,11 @@ int main(int agrc, char* argv[])
 ifstream binaryFile ("binaryFile.bin", ios::in | ios::binary);
  if(binaryFile.is_open())
    {
+     //Read header contents of binary file and diplay to matrix
  BinaryFileHeader *myHeader = new BinaryFileHeader();
  binaryFile.read((char*) myHeader, sizeof(BinaryFileHeader));
  stringstream ss;
+ //convert from decimal to hex
  ss << hex << showbase << uppercase <<  myHeader->magicNumber;
  string hexStr(ss.str());
  string str = "Magic: ";
@@ -79,6 +96,7 @@ ifstream binaryFile ("binaryFile.bin", ios::in | ios::binary);
  BinaryFileRecord *myRecord = new BinaryFileRecord();
  for(int i = 0; i < 4; i++)
    {
+     //Read record contents of binary file and display to matrix
      binaryFile.read((char *) myRecord, sizeof(BinaryFileRecord));
      str = "strlen: " + to_string(myRecord->strLength);
      setCDKMatrixCell(myMatrix, i + 2, 1, str.c_str());
@@ -86,7 +104,9 @@ ifstream binaryFile ("binaryFile.bin", ios::in | ios::binary);
      setCDKMatrixCell(myMatrix, i + 2, 2, str.c_str());
 
 }
+ //close file
  binaryFile.close();
+ //diplay updated matrix
  drawCDKMatrix(myMatrix, true);
 
  sleep (10);

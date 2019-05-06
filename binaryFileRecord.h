@@ -1,3 +1,18 @@
+/*                                                                              
+ *Filename        binaryFileRecord.h
+ *Date            5/5/19                                                        
+ *Author          Gabriel Goldstein                                             
+ *Email           gjg180000@utdallas.edu                                        
+ *Course          CS 3377.502 Spring 2019                                       
+ *Version         1.0                                                           
+ *Copyright 2019, All Rights Reserved                                           
+ *                                                                              
+ *Description                                                                   
+ *       Basic Binary Record File to read in from binary file                                                                       
+ *      
+ */
+
+
 #ifndef _BINARYFILERECORD_
 #define _BINARYFILERECORD_
 /*
